@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - Mama Mind</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mama Mind - Doctor Portal</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#" id="logout-btn">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="login-section" class="auth-section">
+                <h2>Doctor Login</h2>
+                <form id="doctor-login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </section>
+
+            <section id="dashboard-section" class="dashboard" style="display: none;">
+                <h2>Welcome, Dr. <span id="doctor-name"></span></h2>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>Patient Cases</h3>
+                        <div id="cases-list">
+                            <p>Loading patient cases...</p>
+                        </div>
+                        <button class="btn" id="view-all-cases-btn">View All Cases</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Today's Appointments</h3>
+                        <div id="appointments-list">
+                            <p>Loading appointments...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Consultations</h3>
+                        <div id="consultations-list">
+                            <p>Loading consultations...</p>
+                        </div>
+                        <button class="btn" id="start-consultation-btn">Start New Consultation</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Prescriptions</h3>
+                        <div id="prescriptions-list">
+                            <p>Loading recent prescriptions...</p>
+                        </div>
+                        <button class="btn" id="create-prescription-btn">Create Prescription</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Lab Reports</h3>
+                        <div id="lab-reports-list">
+                            <p>Loading lab reports...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Urgent Cases</h3>
+                        <div id="urgent-cases-list">
+                            <p>Loading urgent cases...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mama Mind - Team AstroAspires. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/doctor.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASHA Worker Portal - Mama Mind</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mama Mind - ASHA Worker Portal</h1>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="#" id="logout-btn">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section id="login-section" class="auth-section">
+                <h2>ASHA Worker Login</h2>
+                <form id="asha-login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                </form>
+            </section>
+
+            <section id="dashboard-section" class="dashboard" style="display: none;">
+                <h2>Welcome, <span id="asha-name"></span></h2>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>My Patients</h3>
+                        <div id="patients-list">
+                            <p>Loading patient list...</p>
+                        </div>
+                        <button class="btn" id="add-patient-btn">Add New Patient</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Upcoming Visits</h3>
+                        <div id="visits-list">
+                            <p>Loading scheduled visits...</p>
+                        </div>
+                        <button class="btn" id="schedule-visit-btn">Schedule Visit</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Health Reports</h3>
+                        <div id="reports-list">
+                            <p>Loading reports...</p>
+                        </div>
+                        <button class="btn" id="create-report-btn">Create New Report</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Alerts & Notifications</h3>
+                        <div id="alerts-list">
+                            <p>Loading alerts...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Educational Resources</h3>
+                        <div id="resources-list">
+                            <p>Loading resources...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Community Statistics</h3>
+                        <div id="statistics">
+                            <p>Loading statistics...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mama Mind - Team AstroAspires. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/firebase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/asha.js"></script>
+</body>
+</html>
