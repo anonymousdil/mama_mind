@@ -67,11 +67,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Sanitize HTML to prevent XSS
+function sanitizeHTML(str) {
+    const temp = document.createElement('div');
+    temp.textContent = str;
+    return temp.innerHTML;
+}
+
 // Display error message
 function showError(elementId, message) {
     const element = document.getElementById(elementId);
     if (element) {
-        element.innerHTML = `<div class="alert alert-error">${message}</div>`;
+        const sanitizedMessage = sanitizeHTML(message);
+        element.innerHTML = `<div class="alert alert-error">${sanitizedMessage}</div>`;
         setTimeout(() => {
             element.innerHTML = '';
         }, 5000);
@@ -82,7 +90,8 @@ function showError(elementId, message) {
 function showSuccess(elementId, message) {
     const element = document.getElementById(elementId);
     if (element) {
-        element.innerHTML = `<div class="alert alert-success">${message}</div>`;
+        const sanitizedMessage = sanitizeHTML(message);
+        element.innerHTML = `<div class="alert alert-success">${sanitizedMessage}</div>`;
         setTimeout(() => {
             element.innerHTML = '';
         }, 5000);
@@ -93,7 +102,8 @@ function showSuccess(elementId, message) {
 function showInfo(elementId, message) {
     const element = document.getElementById(elementId);
     if (element) {
-        element.innerHTML = `<div class="alert alert-info">${message}</div>`;
+        const sanitizedMessage = sanitizeHTML(message);
+        element.innerHTML = `<div class="alert alert-info">${sanitizedMessage}</div>`;
     }
 }
 
