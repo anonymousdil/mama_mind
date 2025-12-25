@@ -6,26 +6,25 @@ import { doc, setDoc } from
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
   try {
-    const emailInput = document.getElementById("email").value;
-    const passwordInput = document.getElementById("password").value;
-    const roleInput = document.getElementById("role").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const role = document.getElementById("role").value;
 
     const userCredential = await signInWithEmailAndPassword(
       auth,
-      emailInput,
-      passwordInput
+      email,
+      password
     );
 
     await setDoc(doc(db, "users", userCredential.user.uid), {
-      email: emailInput,
-      role: roleInput
+      email: email,
+      role: role
     });
 
-    // Redirect based on role
-    window.location.href = `${roleInput}.html`;
+    window.location.href = `./${role}.html`;
 
   } catch (error) {
-    alert("Login failed: " + error.message);
+    alert(error.message);
     console.error(error);
   }
 });
