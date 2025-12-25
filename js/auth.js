@@ -1,20 +1,31 @@
 import { auth, db } from "./firebase.js";
-import { signInWithEmailAndPassword } from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, setDoc } from 
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { signInWithEmailAndPassword } from
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, setDoc } from
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-document.getElementById("loginBtn").onclick = async () => {
-  const email = email.value;
-  const password = password.value;
-  const role = role.value;
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  try {
+    const emailInput = document.getElementById("email").value;
+    const passwordInput = document.getElementById("password").value;
+    const roleInput = document.getElementById("role").value;
 
-  const user = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      emailInput,
+      passwordInput
+    );
 
-  await setDoc(doc(db, "users", user.user.uid), {
-    email,
-    role
-  });
+    await setDoc(doc(db, "users", userCredential.user.uid), {
+      email: emailInput,
+      role: roleInput
+    });
 
-  window.location.href = role + ".html";
-};
+    // Redirect based on role
+    window.location.href = `${roleInput}.html`;
+
+  } catch (error) {
+    alert("Login failed: " + error.message);
+    console.error(error);
+  }
+});
