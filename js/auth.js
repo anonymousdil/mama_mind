@@ -16,7 +16,7 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
       password
     );
 
-    await setDoc(doc(db, "users", userCredential.user.uid), {
+    await setDoc(doc(db, "users", userId), data), {
       email: email,
       role: role
     });
